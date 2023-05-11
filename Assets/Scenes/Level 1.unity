@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df948babd1639a54c8a486c08a42e37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  force: 0
+  rb: {fileID: 657874082}
+  force: 10
 --- !u!54 &657874082
 Rigidbody:
   m_ObjectHideFlags: 0
