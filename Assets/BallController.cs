@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class BallController : MonoBehaviour, IPointerDownHandler
@@ -19,7 +20,12 @@ public class BallController : MonoBehaviour, IPointerDownHandler
     Ray ray;
     Plane plane;
 
+    public UnityEvent<int> onBallShooted = new UnityEvent<int>();
+
     public bool ShootingMode { get => shootingMode; }
+
+    int shootCount;
+    public int ShootCount { get => shootCount; }
 
     private void Update()
     {
@@ -79,9 +85,9 @@ public class BallController : MonoBehaviour, IPointerDownHandler
         if (shoot)
         {
             shoot = false;
-            Vector3 direction = Camera.main.transform.forward;
-            direction.y = 0;
-            rb.AddForce(direction * force * forceFactor, ForceMode.Impulse);
+            AddForce(forceDirection * force * forceFactor, ForceMode.Impulse);
+            shootCount += 1;
+            onBallShooted.Invoke(shootCount);
         }
 
         if(rb.velocity.sqrMagnitude < 0.01f && rb.velocity.sqrMagnitude > 0)
