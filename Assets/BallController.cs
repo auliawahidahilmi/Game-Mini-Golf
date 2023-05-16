@@ -76,6 +76,7 @@ public class BallController : MonoBehaviour, IPointerDownHandler
                 shootingMode = false;
                 aimLine.gameObject.SetActive(false);
                 aimWorld.gameObject.SetActive(false);
+                AudioManager.Instance.PlaySFX("Dash");
             }
         }
     }

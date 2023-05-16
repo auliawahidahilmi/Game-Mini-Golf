@@ -12,6 +12,8 @@ public class Goal : MonoBehaviour
         if(other.CompareTag("Ball"))
         {
             OnBallGoalEnter.Invoke();
+            //AudioManager.Instance.musicSource.Stop();
+            AudioManager.Instance.PlaySFX("Win");
         }
     }
 }
